@@ -9,8 +9,7 @@ public class MainFrame extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(false);
 
-        MainCanvas mainCanvas = new MainCanvas();
-        add(mainCanvas);
+        add(MainCanvas.getInstance());
         pack();
         setLocationRelativeTo(null);
     }

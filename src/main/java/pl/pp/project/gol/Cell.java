@@ -10,6 +10,15 @@ public class Cell {
         this.y = y;
     }
 
+    public boolean isNeighbor(Cell cell) {
+        if (cell == this) {
+            return false;
+        }
+
+        return cell.getX() <= x + 1 && cell.getX() >= x - 1 &&
+                cell.getY() <= y + 1 && cell.getY() >= y - 1;
+    }
+
     public int getX() {
         return x;
     }

@@ -7,6 +7,9 @@ public class Run {
         EventQueue.invokeLater(() -> {
             MainFrame mainFrame = new MainFrame();
             mainFrame.setVisible(true);
+
+            MainTimer mainTimer = new MainTimer();
+            mainTimer.start();
         });
     }
 }
