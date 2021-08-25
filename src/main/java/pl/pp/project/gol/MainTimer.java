@@ -9,7 +9,7 @@ public class MainTimer {
     private Timer timer;
 
     public MainTimer() {
-        timer = new Timer(500, e -> {
+        timer = new Timer(100, e -> {
             cellService.update();
             mainCanvas.repaint();
         });

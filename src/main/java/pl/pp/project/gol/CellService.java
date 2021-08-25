@@ -1,5 +1,8 @@
 package pl.pp.project.gol;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,18 +25,29 @@ public class CellService {
             }
         }
 
-        getByCords(3, 3).setLife(true);
-        getByCords(3, 4).setLife(true);
-        getByCords(3, 5).setLife(true);
+        try {
+            populate();
+        } catch (IOException e) {
+            System.out.println("Problem with reading from file");
+        }
+    }
 
-        getByCords(10, 4).setLife(true);
-        getByCords(11, 4).setLife(true);
-        getByCords(12, 4).setLife(true);
+    private void populate() throws IOException {
+        String fileName = "dart.cells";
 
-        getByCords(10, 10).setLife(true);
-        getByCords(10, 11).setLife(true);
-        getByCords(11, 10).setLife(true);
-        getByCords(11, 11).setLife(true);
+        int y = 85;
+
+        for (String line : Files.readAllLines(Paths.get(fileName))) {
+            for (int x = 0; x<line.length(); x++) {
+                if (line.charAt(x) == 'O') {
+                    getByCords(x, y).setLife(true);
+                }
+            }
+
+            y++;
+        }
+
+
     }
 
     public Cell getByCords(int x, int y) {
